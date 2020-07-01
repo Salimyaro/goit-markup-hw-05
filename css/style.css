@@ -11,6 +11,7 @@
 	--border-main-color: #AFB1B8;
 	--border-portfolio-color: #EEEEEE;
 	--transparent-bg-color: rgba(47, 48, 58, 0.8);
+	--social-svg-color: #AFB1B8;
 }
 
 /* Body ------------------------------------------------------------------------------------*/
@@ -74,6 +75,7 @@ img {
 	clip: rect(0 0 0 0);
 	overflow: hidden;
 }
+
 /* logo ------------------------------------------------------------------------------------*/
 .logo {
 	display: inline-block;
@@ -87,6 +89,39 @@ img {
 }
 .logo__span{
 	color: var(--accent-color);
+}
+
+/* Social --------------------------------------------------------------------------------- */
+.social__list {
+   display: flex;
+	align-items: center;
+   justify-content: center;
+   margin-left: auto;
+	margin-right: auto;
+}
+.social__item:not(:last-child) {
+	margin-right: 10px;
+}
+.social__link {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+   width: 44px;
+   height: 44px;
+   border-radius: 50%;
+	background-color: transparent;
+	--color4: var(--social-svg-color);
+	fill: var(--color4);
+	transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.social__link:hover,
+.social__link:focus {
+	background-color: var(--accent-color);
+	--color4: var(--white-text-color);
+}
+.social__icon{
+	width: 20px;
+	height: 20px;
 }
 
 
@@ -143,9 +178,14 @@ img {
 }
 .nav__link{
 	color: var(--title-text-color);
+	transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .contacts__link{
 	color: var(--primary-text-color);
+	--color1: var(--primary-text-color);
+	fill: var(--color1);
+	transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+	
 }
 .nav__text,
 .contacts__text{
@@ -158,10 +198,9 @@ img {
 .contacts__link:hover,
 .contacts__link:focus {
 	color: var(--accent-color);
-	--color1: var(--accent-color)
+	--color1: var(--accent-color);
 }
-
-.nav__item{
+.nav__link--current{
 	position: relative;
 }
 .nav__link--current::after {
@@ -220,6 +259,7 @@ img {
 	background-color: var(--accent-color);
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 	border-radius: 4px;
+	transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .hero-section__button:hover,
 .hero-section__button:focus {
@@ -291,6 +331,7 @@ img {
 	margin: -15px;
 }
 .example-card {
+	position: relative;
 	width: 370px;
 	margin: 15px;
 }
@@ -298,13 +339,14 @@ img {
 	display: block;
 }
 .example-card__title {
-	width: 370px;
-	height: 70px;
-	background-color: var(--transparent-bg-color);
+	position: absolute;
+	width: 100%;
+	transform: translate3d(0, -100%, 0);
 	font-weight: 700;
 	line-height: 70px;
 	text-align: center;
 	text-transform: uppercase;
+	background-color: var(--transparent-bg-color);
 	color: var(--white-text-color);
 }
 
@@ -350,35 +392,6 @@ img {
 	color: var(--primary-text-color);
 	margin-bottom: 16px;
 }
-/* Social --------------------------------------------------------------------------------- */
-.social__list {
-   display: flex;
-	align-items: center;
-   justify-content: center;
-   margin-left: auto;
-	margin-right: auto;
-}
-.social__item:not(:last-child) {
-	margin-right: 10px;
-}
-.social__link {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-   width: 44px;
-   height: 44px;
-   border-radius: 50%;
-   background-color: transparent;
-}
-.social__link:hover,
-.social__link:focus {
-	background-color: var(--accent-color);
-	--color4: var(--white-text-color);
-}
-.social__icon{
-	width: 20px;
-	height: 20px;
-}
 
 /* Clients -------------------------------------------------------------------------------- */
 .clients {
@@ -397,16 +410,6 @@ img {
 }
 .clients__item {
    margin: 15px;
-}
-.clients__link {
-	width: 170px;
-	height: 90px;
-   box-sizing: border-box;
-	display: flex;
-   align-items: center;
-	justify-content: center;
-	border: 1px solid var(--border-main-color);
-   border-radius: 4px;
 }
 .clients__icon--ya-co{
 	width: 45px;
@@ -432,7 +435,19 @@ img {
 	width: 89px;
 	height: 46px;
 }
-
+.clients__link {
+	width: 170px;
+	height: 90px;
+   box-sizing: border-box;
+	display: flex;
+   align-items: center;
+	justify-content: center;
+	border: 1px solid var(--border-main-color);
+	border-radius: 4px;
+	--color4: var(--social-svg-color);
+	fill: var(--color4);
+	transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1), fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
 .clients__link:hover,
 .clients__link:focus {
 	border-color: var(--accent-color);
@@ -470,6 +485,7 @@ img {
 	background-color: var(--secondary-bg-color);
 	border-radius: 4px;
 	padding: 6px 22px;
+	transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .filter__text:hover,
 .filter__text:focus,
@@ -486,7 +502,6 @@ img {
 	margin: -15px;
 }
 .portfolio__item {
-	/* width: 350px; */
 	margin: 15px;
 	background: var(--primary-bg-color);
 	box-sizing: border-box;
@@ -494,15 +509,15 @@ img {
 .portfolio__link {
 	display: block;
 	text-decoration: none;
+	transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .portfolio__link:hover,
 .portfolio__link:focus{
 	box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.16), 0px 4px 4px rgba(0, 0, 0, 0.06), 0px 1px 1px rgba(0, 0, 0, 0.12);
 }
-.portfolio__image {
+.portfolio__image-thumb {
 	position: relative;
-	display: block;
-	width: 100%;
+	overflow: hidden;
 }
 .portfolio__content{
 	border: 1px solid var(--border-portfolio-color);
@@ -526,15 +541,10 @@ img {
 	padding-bottom: 20px;
 }
 .portfolio__hover-text-wrapper{
-	display: none;
-	align-items: center;
-	box-sizing: border-box;
-	padding: 63px 24px;
 	position: absolute;
-	width: 370px;
-	height: 294px;
-   margin-top: -294px;
+	padding: 63px 24px;
 	background-color: rgba(33, 150, 243, 0.9);
+	transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .portfolio__hover-text {
 	font-size: 18px;
@@ -543,7 +553,7 @@ img {
 }
 .portfolio__link:hover .portfolio__hover-text-wrapper,
 .portfolio__link:focus .portfolio__hover-text-wrapper {
-	display: block;
+	transform: translateY(-100%);
 }
 
 
